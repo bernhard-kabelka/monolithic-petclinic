@@ -50,4 +50,4 @@ Petclinic uses an in-memory database (HSQLDB) which gets populated at startup wi
 ## Group 7 Team Members
 
 * Bernhard Kabelka
-* ...
+* Elisaveta Encheva
