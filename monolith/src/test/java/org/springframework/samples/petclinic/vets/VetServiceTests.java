@@ -1,14 +1,14 @@
 package org.springframework.samples.petclinic.vets;
 
-import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.samples.petclinic.vets.model.Vet;
-import org.springframework.samples.petclinic.vets.service.VetService;
+import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.Collection;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.samples.petclinic.vets.service.VetDTO;
+import org.springframework.samples.petclinic.vets.service.VetService;
 
 @SpringBootTest
 public class VetServiceTests {
@@ -17,7 +17,7 @@ public class VetServiceTests {
 
     @Test
     void shouldFindVets() {
-        Collection<Vet> vets = vetService.allVets();
+        Collection<VetDTO> vets = vetService.allVets();
 
         assertThat(vets)
                 .filteredOn(vet -> vet.getId() == 3)
@@ -25,7 +25,7 @@ public class VetServiceTests {
                 .first()
                 .hasFieldOrPropertyWithValue("lastName", "Douglas")
                 .hasFieldOrPropertyWithValue("nrOfSpecialties", 2)
-                .extracting(Vet::getSpecialties).asList()
+                .extracting(VetDTO::getSpecialties).asList()
                 .extracting("name")
                 .containsExactly("dentistry", "surgery");
     }

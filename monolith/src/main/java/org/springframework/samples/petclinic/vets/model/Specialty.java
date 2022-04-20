@@ -15,9 +15,13 @@
  */
 package org.springframework.samples.petclinic.vets.model;
 
-import org.springframework.samples.petclinic.model.NamedEntity;
+import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.Table;
 
 /**
@@ -27,6 +31,38 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "specialties")
-public class Specialty extends NamedEntity {
+public class Specialty implements Serializable {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+    
+    @Column(name = "name")
+    private String name;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public boolean isNew() {
+        return this.id == null;
+    }
+
+    public String getName() {
+        return this.name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        return this.getName();
+    }
 
 }
