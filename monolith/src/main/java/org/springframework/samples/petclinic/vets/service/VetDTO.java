@@ -9,18 +9,15 @@ public class VetDTO {
     private String lastName;
     
     private List<SpecialtyDTO> specialties;
-
-	private Integer id;
     
-    public VetDTO(Integer id, String firstName, String lastName, List<SpecialtyDTO> specialties) {
-		this.id = id;
+    public VetDTO() {
+		// Nothing to do
+	}
+
+    public VetDTO(String firstName, String lastName, List<SpecialtyDTO> specialties) {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.specialties = specialties;
-	}
-    
-    public Integer getId() {
-		return id;
 	}
     
     public String getFirstName() {

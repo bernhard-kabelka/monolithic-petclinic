@@ -26,7 +26,7 @@ public class VetService {
     
 	private VetDTO createVetDTO(Vet vet) {
 		List<Specialty> specialties = vet.getSpecialties();
-		return new VetDTO(vet.getId(), vet.getFirstName(), vet.getLastName(), convertSpecialties(specialties));
+		return new VetDTO(vet.getFirstName(), vet.getLastName(), convertSpecialties(specialties));
 	}
 
 	private List<SpecialtyDTO> convertSpecialties(List<Specialty> specialties) {
